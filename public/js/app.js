@@ -6,10 +6,10 @@ $(function() {
        success: function(html) {
          var element = $('fleur')
          $('#fleur').html(html)
-         console.log('#fleur');
+
        },
        error: function() {
-         console.log('error');
+
        }
     });
 
@@ -20,10 +20,10 @@ $(function() {
          success: function(html) {
            var element = $('delay')
            $('#delay').html(html)
-           console.log('#delay');
+
          },
          error: function() {
-           console.log('error');
+
          }
       });
     }, 5000)
@@ -37,15 +37,31 @@ $(function() {
          var element = $('info')
          $('#btn').click(function() {
            $('#info').html(html)
-          console.log('#info');
+
         });
        },
        error: function() {
-         console.log('error');
+
        }
     });
 
+    $("#formulaire").submit(function(e){ // On sélectionne le formulaire par son identifiant
+      var name = $(this).find('[name="name"]').val(); // on récupère la valeur de chaque champs dans la variable
+      var sex = $(this).find('[name="sex"]:checked').val();
+      var type = $(this).find('[name="type"]').val();
 
+      var data = {
+        name: name,
+        sex: sex,
+        type: type
+      };
+      console.log(data);
 
+      $.ajax({
+        url:"/user",
+        method:"POST", //First change type to method here
 
+        data: data
+      });
+    });
 });

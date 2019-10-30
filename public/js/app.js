@@ -55,7 +55,6 @@ $(function() {
         sex: sex,
         type: type
       };
-      console.log(data);
 
       $.ajax({
         url:"/user",
@@ -64,4 +63,60 @@ $(function() {
         data: data
       });
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var heure = $('#h').text() // avec .text on récupère le contenu
+    var minute = $('#m').text()
+    var seconde = $('#s').text()
+
+
+    var h = parseInt(heure);
+    var m = parseInt(minute);
+    var s = parseInt(seconde);
+
+    s = s+1;
+    if (s > 59) {
+      s=0;
+      m=m+1;
+    }
+
+    if (m > 59) {
+      m=0;
+      h=h+1;
+    }
+
+    if (h > 23) {
+      h=0;
+    }
+
+    if (h==0) {
+      h='0'+h;
+    }
+
+    if (m==0) {
+      m='0'+m;
+    }
+
+    if (s==0) {
+      s='0'+s;
+    }
+
+    $('#h1').html(h)
+    $('#m1').html(m)
+    $('#s1').html(s)
+
 });
